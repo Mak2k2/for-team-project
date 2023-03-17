@@ -1,0 +1,1 @@
+yamllint roles/install/tasks/*.* && ansible-lint play.yml && echo "syntax is correct"

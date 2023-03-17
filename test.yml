@@ -1,0 +1,6 @@
+---
+
+- name: install test
+  hosts: servers
+  tasks:
+    - include: roles/install/tasks/test.yml

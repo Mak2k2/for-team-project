@@ -1,0 +1,26 @@
+---
+
+- name: check OS
+  assert:
+    that: "ansible_os_family == 'Debian'"
+    fail_msg: "Wrong operating system!"
+    success_msg: "Suitable operating system"
+
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: install MySQL
+  include_tasks: MySQL.yml
+
+- name: install Nginx
+  include_tasks: nginx.yml
+
+- name: install php-fpm
+  include_tasks: php-fpm.yml
+
+- name: WP
+  include_tasks: WP.yml
